@@ -62,6 +62,11 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 	protected $refreshToken;
 
 	/**
+	 * DEBUG
+	 */
+	protected $debugLevel = SMTP::DEBUG_OFF
+
+	/**
 	 * Sending form
 	 *
 	 * @param MailMessage $message User message
@@ -76,7 +81,7 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			$mail->Host = 'smtp.gmail.com';
 			$mail->Port = 587;
-			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+			$mail->SMTPSecure = $this->debugLevel;
 			$mail->SMTPAuth = true;
 			$mail->AuthType = 'XOAUTH2';
 
