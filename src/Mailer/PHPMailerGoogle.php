@@ -64,7 +64,7 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 	/**
 	 * DEBUG
 	 */
-	protected $debugLevel = SMTP::DEBUG_OFF
+	protected $debugLevel = SMTP::DEBUG_OFF;
 
 	/**
 	 * Sending form
