@@ -4,8 +4,13 @@ namespace CCMedia\FormHandler\Mailer;
 
 use CCMedia\FormHandler\DataObjects\DataObject;
 use CCMedia\FormHandler\DataObjects\MailMessage;
-use PHPMailer\PHPMailer\PHPMailer as PHPMailerLib;
+use Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\OAuth;
 use PHPMailer\PHPMailer\Exception as PhpMailerException;
+
+use League\OAuth2\Client\Provider\Google;
 
 /**
  * Class PHPMailer
@@ -22,46 +27,39 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 	protected $attachmentsSizeLimit = 8000000;
 
 	/**
-	 * The user's host
-	 *
-	 * @var string
-	 */
-	protected $host;
-
-	/**
-	 * User from user config
-	 *
-	 * @var string
-	 */
-	protected $user;
-
-	/**
-	 * Password from user config
-	 *
-	 * @var string
-	 */
-	protected $password;
-
-	/**
-	 * Protocol from user config
-	 *
-	 * @var string|bool
-	 */
-	protected $protocol = false;
-
-	/**
-	 * Port from user config
-	 *
-	 * @var string
-	 */
-	protected $port = 25;
-
-	/**
 	 * List of errors
 	 *
 	 * @var array
 	 */
 	protected $errors = array();
+
+	/**
+	 * Email address
+	 *
+	 * @var string
+	 */
+	protected $email;
+
+	/**
+	 * ClientId
+	 *
+	 * @var string
+	 */
+	protected $clientId;
+
+	/**
+	 * Secret
+	 *
+	 * @var string
+	 */
+	protected $clientSecret;
+
+	/**
+	 * Secret
+	 *
+	 * @var string
+	 */
+	protected $refreshToken;
 
 	/**
 	 * Sending form
@@ -72,23 +70,37 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 	 */
 	public function send(MailMessage $message)
 	{
-		$mail = new PHPMailerLib(true);               // Passing `true` enables exceptions.
+		$mail = new PHPMailer(true);               // Passing `true` enables exceptions.
 		try {
-			// Enable SMTP if host is set.
-			if (!empty($this->host)) {
-				$mail->SMTPDebug = 0;
-				$mail->isSMTP();
-				$mail->Host = $this->host;
-				$mail->Port = $this->port;
-				if (!empty($this->user)) {
-					$mail->SMTPAuth = true;
-					$mail->Username = $this->user;
-					$mail->Password = $this->password;
-				}
-				if (!empty($this->protocol)) {
-					$mail->SMTPSecure = $this->protocol;
-				}
-			}
+			$mail->isSMTP();
+			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->Host = 'smtp.gmail.com';
+			$mail->Port = 587;
+			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+			$mail->SMTPAuth = true;
+			$mail->AuthType = 'XOAUTH2';
+
+			//Create a new OAuth2 provider instance
+			$provider = new Google(
+				[
+					'clientId' => $this->clientId,
+					'clientSecret' => $this->clientSecret,
+				]
+			);
+
+			//Pass the OAuth provider instance to PHPMailer
+			$mail->setOAuth(
+				new OAuth(
+					[
+						'provider' => $provider,
+						'clientId' => $this->clientId,
+						'clientSecret' => $this->clientSecret,
+						'refreshToken' => $this->refreshToken,
+						'userName' => $this->email,
+					]
+				)
+			);
+
 
 			// Set From.
 			if ($address = $message->getFrom()) {
@@ -144,7 +156,6 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 			return $mail->send();
 		} catch (PhpMailerException $e) {
 			$this->errors[] = 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo;
-
 			return false;
 		}
 	}

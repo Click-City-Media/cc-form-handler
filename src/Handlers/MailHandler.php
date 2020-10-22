@@ -14,6 +14,7 @@ use CCMedia\FormHandler\Mailer\MailerInterface;
 class MailHandler implements HandlerInterface
 {
 	const USE_PHPMAILER = 'PhpMailer';
+	const USE_PHPMAILER_GOOGLE = 'PhpMailerGoogle';
 	const USE_POSTMARKAPP = 'PostMarkApp';
 	const USE_MANDRILL = 'Mandrill';
 
