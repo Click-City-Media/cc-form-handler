@@ -1,15 +1,15 @@
 <?php
 
-namespace JustCoded\FormHandler;
+namespace CCMedia\FormHandler;
 
-use JustCoded\FormHandler\Handlers\HandlerInterface;
+use CCMedia\FormHandler\Handlers\HandlerInterface;
 use Valitron\Validator;
-use JustCoded\FormHandler\Validator\FileValidator;
+use CCMedia\FormHandler\Validator\FileValidator;
 
 /**
  * Class FormHandler
  *
- * @package JustCoded\FormHandler
+ * @package CCMedia\FormHandler
  */
 class FormHandler
 {
@@ -94,7 +94,7 @@ class FormHandler
 		// clean errors if we run validate several times.
 		$this->errors = array();
 		// validate, set errors.
-		if (! $v->validate()) {
+		if (!$v->validate()) {
 			$this->errors = $v->errors();
 		}
 

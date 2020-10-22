@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\Exception as PhpMailerException;
  *
  * @package CCMedia\FormHandler\Mailer
  */
-class PHPMailer extends DataObject implements MailerInterface
+class PHPMailerGoogle extends DataObject implements MailerInterface
 {
 	/**
 	 * Attachments size limit

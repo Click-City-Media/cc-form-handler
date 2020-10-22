@@ -1,11 +1,11 @@
 <?php
 
-namespace JustCoded\FormHandler\DataObjects;
+namespace CCMedia\FormHandler\DataObjects;
 
 /**
  * Class File
  *
- * @package JustCoded\FormHandler\DataObjects
+ * @package CCMedia\FormHandler\DataObjects
  */
 class File extends DataObject
 {

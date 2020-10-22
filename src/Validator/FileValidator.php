@@ -1,14 +1,14 @@
 <?php
 
-namespace JustCoded\FormHandler\Validator;
+namespace CCMedia\FormHandler\Validator;
 
 use Valitron\Validator;
-use JustCoded\FormHandler\DataObjects\File;
+use CCMedia\FormHandler\DataObjects\File;
 
 /**
  * Class File
  *
- * @package JustCoded\FormHandler\Validator
+ * @package CCMedia\FormHandler\Validator
  */
 class FileValidator
 {
@@ -40,11 +40,11 @@ class FileValidator
 		$allowTypes = $params[0] ?? [];
 		$allowSize = $params[1] ?? 2000000;
 
-		if (empty($value) || ! is_a($value, File::class)) {
+		if (empty($value) || !is_a($value, File::class)) {
 			return false;
 		} elseif (0 < $allowSize && $value->size >= $allowSize) {
 			return false;
-		} elseif (!empty($allowTypes) && ! in_array($value->getExtension(), $allowTypes)) {
+		} elseif (!empty($allowTypes) && !in_array($value->getExtension(), $allowTypes)) {
 			return false;
 		}
 

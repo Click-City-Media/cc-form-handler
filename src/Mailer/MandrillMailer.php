@@ -1,17 +1,17 @@
 <?php
 
-namespace JustCoded\FormHandler\Mailer;
+namespace CCMedia\FormHandler\Mailer;
 
-use JustCoded\FormHandler\DataObjects\DataObject;
-use JustCoded\FormHandler\DataObjects\EmailAttachment;
-use JustCoded\FormHandler\DataObjects\MailMessage;
+use CCMedia\FormHandler\DataObjects\DataObject;
+use CCMedia\FormHandler\DataObjects\EmailAttachment;
+use CCMedia\FormHandler\DataObjects\MailMessage;
 use Mandrill;
 use Mandrill_Error;
 
 /**
  * Class MandrillMailer
  *
- * @package JustCoded\FormHandler\Mailer
+ * @package CCMedia\FormHandler\Mailer
  */
 class MandrillMailer extends DataObject implements MailerInterface
 {
@@ -92,7 +92,8 @@ class MandrillMailer extends DataObject implements MailerInterface
 			$mandrillMessage['to'] = $to;
 
 			// Attachments.
-			if (0 < $message->getAttachmentsSize() && $message->getAttachmentsSize() < $this->attachmentsSizeLimit
+			if (
+				0 < $message->getAttachmentsSize() && $message->getAttachmentsSize() < $this->attachmentsSizeLimit
 				&& $attachments = $message->getAttachments()
 			) {
 				$attachmentsArray = [];

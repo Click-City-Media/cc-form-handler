@@ -1,6 +1,6 @@
 <?php
 
-namespace JustCoded\FormHandler\Handlers;
+namespace CCMedia\FormHandler\Handlers;
 
 interface HandlerInterface
 {

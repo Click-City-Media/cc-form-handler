@@ -1,10 +1,10 @@
 <?php
 
-namespace JustCoded\FormHandler;
+namespace CCMedia\FormHandler;
 
 use Exception;
 
-if (! function_exists('render_template')) {
+if (!function_exists('render_template')) {
 	/**
 	 * Render template
 	 *
@@ -17,7 +17,7 @@ if (! function_exists('render_template')) {
 	 */
 	function render_template(string $template, array $data)
 	{
-		if (! is_file($template)) {
+		if (!is_file($template)) {
 			throw new Exception('Unable to find template file: ' . $template);
 		}
 
@@ -33,7 +33,7 @@ if (! function_exists('render_template')) {
 	}
 }
 
-if (! function_exists('value_to_string')) {
+if (!function_exists('value_to_string')) {
 	/**
 	 * Converting value to string
 	 *

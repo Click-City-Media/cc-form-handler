@@ -1,14 +1,14 @@
 <?php
 
-namespace JustCoded\FormHandler\DataObjects;
+namespace CCMedia\FormHandler\DataObjects;
 
-use function JustCoded\FormHandler\render_template;
-use function JustCoded\FormHandler\value_to_string;
+use function CCMedia\FormHandler\render_template;
+use function CCMedia\FormHandler\value_to_string;
 
 /**
  * Class MailMessage
  *
- * @package JustCoded\FormHandler\DataObjects
+ * @package CCMedia\FormHandler\DataObjects
  */
 class MailMessage extends DataObject
 {
@@ -275,5 +275,4 @@ class MailMessage extends DataObject
 
 		return $totalSize;
 	}
-
 }

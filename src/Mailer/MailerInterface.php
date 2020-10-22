@@ -1,7 +1,8 @@
 <?php
-namespace JustCoded\FormHandler\Mailer;
 
-use JustCoded\FormHandler\DataObjects\MailMessage;
+namespace CCMedia\FormHandler\Mailer;
+
+use CCMedia\FormHandler\DataObjects\MailMessage;
 
 interface MailerInterface
 {

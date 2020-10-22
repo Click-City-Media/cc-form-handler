@@ -1,15 +1,15 @@
 <?php
 
-namespace JustCoded\FormHandler\Handlers;
+namespace CCMedia\FormHandler\Handlers;
 
-use JustCoded\FormHandler\DataObjects\MailMessage;
-use JustCoded\FormHandler\Mailer\MailerFactory;
-use JustCoded\FormHandler\Mailer\MailerInterface;
+use CCMedia\FormHandler\DataObjects\MailMessage;
+use CCMedia\FormHandler\Mailer\MailerFactory;
+use CCMedia\FormHandler\Mailer\MailerInterface;
 
 /**
  * Class MailHandler
  *
- * @package JustCoded\FormHandler\Handlers
+ * @package CCMedia\FormHandler\Handlers
  */
 class MailHandler implements HandlerInterface
 {

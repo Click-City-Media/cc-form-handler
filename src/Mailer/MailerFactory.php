@@ -1,13 +1,13 @@
 <?php
 
-namespace JustCoded\FormHandler\Mailer;
+namespace CCMedia\FormHandler\Mailer;
 
-use JustCoded\FormHandler\Handlers\MailHandler;
+use CCMedia\FormHandler\Handlers\MailHandler;
 
 /**
  * Class MailerFactory
  *
- * @package JustCoded\FormHandler\Mailer
+ * @package CCMedia\FormHandler\Mailer
  */
 class MailerFactory
 {
@@ -27,6 +27,9 @@ class MailerFactory
 				break;
 			case MailHandler::USE_MANDRILL:
 				$mailer = new MandrillMailer($config);
+				break;
+			case MailHandler::USE_PHPMAILER_GOOGLE:
+				$mailer = new PHPMailerGoogle($config);
 				break;
 			default:
 				new \Exception("MailerFactory: unable to find mailer for type \"{$type}\"");

@@ -1,11 +1,11 @@
 <?php
 
-namespace JustCoded\FormHandler\DataObjects;
+namespace CCMedia\FormHandler\DataObjects;
 
 /**
  * Class DataObject
  *
- * @package JustCoded\FormHandler\DataObjects
+ * @package CCMedia\FormHandler\DataObjects
  */
 abstract class DataObject
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace JustCoded\FormHandler\FileManager;
+namespace CCMedia\FormHandler\FileManager;
 
-use JustCoded\FormHandler\DataObjects\DataObject;
-use JustCoded\FormHandler\DataObjects\File;
+use CCMedia\FormHandler\DataObjects\DataObject;
+use CCMedia\FormHandler\DataObjects\File;
 
 /**
  * Class FileManager
  *
- * @package JustCoded\FormHandler\FileManager
+ * @package CCMedia\FormHandler\FileManager
  */
 class FileManager extends DataObject
 {
