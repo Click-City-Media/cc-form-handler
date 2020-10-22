@@ -64,7 +64,7 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 	/**
 	 * DEBUG
 	 */
-	protected $debugLevel = SMTP::DEBUG_OFF;
+	protected $debug_level = SMTP::DEBUG_OFF;
 
 	/**
 	 * Sending form
@@ -78,10 +78,10 @@ class PHPMailerGoogle extends DataObject implements MailerInterface
 		$mail = new PHPMailer(true);               // Passing `true` enables exceptions.
 		try {
 			$mail->isSMTP();
-			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->SMTPDebug = $this->debug_level;
 			$mail->Host = 'smtp.gmail.com';
 			$mail->Port = 587;
-			$mail->SMTPSecure = $this->debugLevel;
+			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 			$mail->SMTPAuth = true;
 			$mail->AuthType = 'XOAUTH2';
 
