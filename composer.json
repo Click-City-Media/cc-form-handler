@@ -1,0 +1,25 @@
+{
+    "name": "justcoded/form-handler",
+    "require": {
+        "vlucas/valitron": "^1.4",
+        "phpmailer/phpmailer": "^6.0",
+        "mandrill/mandrill": "1.0.*"
+    },
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ],
+        "psr-4": {
+            "JustCoded\\FormHandler\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JustCoded",
+            "email": "hello@justcoded.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
